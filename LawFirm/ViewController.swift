@@ -10,9 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var webView: UIWebView!
+    
+    @IBAction func back(_ sender: UIBarButtonItem) {
+        webView.goBack()
+    }
+    
+    @IBAction func stop(_ sender: UIBarButtonItem) {
+        webView.stopLoading()
+    }
+    
+    
+    @IBAction func refresh(_ sender: UIBarButtonItem) {
+        webView.reload()
+    }
+    
+    
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        webView.loadRequest(URLRequest(url: URL(string: "https://law-firm.herokuapp.com")!))
     }
 
     override func didReceiveMemoryWarning() {
